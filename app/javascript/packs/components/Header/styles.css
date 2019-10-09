@@ -1,0 +1,20 @@
+.header {
+  width: 100vw;
+  height: 4em;
+  position: absolute;
+  background: white;
+  border-bottom: 1px solid rgb(200,200,200);
+  top: 0;
+  left: 0;
+}
+
+.header-fixed {
+  width: 100vw;
+  height: 4em;
+  top: 0;
+  z-index: 10;
+  position: fixed;
+  background: white;
+  border-bottom: 1px solid rgb(200,200,200);
+  left: 0;
+}

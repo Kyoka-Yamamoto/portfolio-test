@@ -1,0 +1,21 @@
+.carousel-image-bg {
+  width: 100vw;
+  height: calc(100vh - 8em - 1px);
+  margin-top: calc(4em + 1px);
+  z-index: -1;
+  position: absolute;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carousel-image {
+  width: 100vw;
+  height: calc(100vh - 8em - 1px);
+  margin-top: calc(4em + 1px);
+  z-index: 1;
+  position: absolute;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

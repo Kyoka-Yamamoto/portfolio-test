@@ -1,0 +1,12 @@
+.App {
+  width: 100vw;
+  height: 400vh;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+}
+
+.main-container {
+  overflow: hidden;
+  width: 100%;
+}
