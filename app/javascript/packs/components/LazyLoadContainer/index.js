@@ -11,7 +11,8 @@ const LazyLoadContainer = (props) => {
   const items = [
     "recommendations",
     "number 2",
-    "number 3"
+    "number 3",
+    "number 4"
   ]
 
   const componentRefs = items.map(el => {
@@ -24,20 +25,21 @@ const LazyLoadContainer = (props) => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY
 
-    if (componentRefs[0].ref.current.offsetTop) {
-      if (currentScrollY >= componentRefs[0].ref.current.offsetTop && currentScrollY < componentRefs[1].ref.current.offsetTop) {
-        setScroll(1)
-      } else if (currentScrollY >= componentRefs[1].ref.current.offsetTop && currentScrollY < componentRefs[2].ref.current.offsetTop) {
-        console.log(componentRefs[1].title)
-      } else if (currentScrollY >= componentRefs[2].ref.current.offsetTop && currentScrollY < componentRefs[3].ref.current.offsetTop) {
-        console.log(componentRefs[2].title)
-      } else if (currentScrollY >= componentRefs[3].ref.current.offsetTop) {
-        console.log(componentRefs[3].title)
+    const active = componentRefs.map(el => {
+      const offsetBot = (el.ref.current.offsetTop + el.ref.current.offsetHeight)
+      if (currentScrollY >= el.ref.current.offsetTop && currentScrollY < offsetBot) {
+        return true
       }
       else {
-        setScroll(0)
+        return false
       }
-    }
+    })
+
+    active.forEach((el, i) => {
+      if (el) {
+        setScroll(i)
+      }
+    })
   }
 
   useEffect(() => {
@@ -46,9 +48,9 @@ const LazyLoadContainer = (props) => {
   })
 
   return(
-    <div className="lazyload-container" ref={componentRefs[0].ref} onClick={() => console.log(event)}>
-      {["yellow", "purple", "green"].map((el, i) => {
-        return <Ad componentRef={componentRefs[i + 1].ref} el={el}/>
+    <div className="lazyload-container" onClick={() => console.log(event)}>
+      {componentRefs.map((el, i) => {
+        return <Ad currentScroll={scroll} order={i} componentRef={el}/>
       })
       }
     </div>

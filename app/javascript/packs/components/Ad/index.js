@@ -1,14 +1,10 @@
 import React, {useEffect} from 'react'
 
 const Ad = (props) => {
-  useEffect(() => {
-    setTimeout(() => {
-      console.log(props.componentRef)
-    }, 5000)
-  })
-
   return (
-    <div className="ad" ref={props.componentRef} style={{background: props.el}}></div>
+    <div className="ad" ref={props.componentRef.ref} style={{background: `${props.currentScroll === props.order ? "purple" : "green"}`}}>
+      <h1>{props.componentRef.title}</h1>
+    </div>
   )
 }
 
