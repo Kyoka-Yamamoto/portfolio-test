@@ -2,16 +2,24 @@ import React, { useRef, useState, useEffect } from 'react'
 
 import './styles.css'
 
+import Ad from '../Ad'
+
 const LazyLoadContainer = (props) => {
 
   const [scroll, setScroll] = useState(0)
 
-  const componentRefs = [
-    { title: 'start', ref: useRef(null) },
-    { title: 'yellow', ref: useRef(null) },
-    { title: 'purple', ref: useRef(null) },
-    { title: 'green', ref: useRef(null) },
+  const items = [
+    "recommendations",
+    "number 2",
+    "number 3"
   ]
+
+  const componentRefs = items.map(el => {
+    return {
+      title: el,
+      ref: useRef(null)
+    }
+  })
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY
@@ -40,7 +48,7 @@ const LazyLoadContainer = (props) => {
   return(
     <div className="lazyload-container" ref={componentRefs[0].ref} onClick={() => console.log(event)}>
       {["yellow", "purple", "green"].map((el, i) => {
-        return <div className="ad" ref={componentRefs[i + 1].ref} style={{background: el}}></div>
+        return <Ad componentRef={componentRefs[i + 1].ref} el={el}/>
       })
       }
     </div>
