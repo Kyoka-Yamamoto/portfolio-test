@@ -56,10 +56,7 @@ const LandingCarousel = ({ activeImage, setActiveImage }) => {
 
   return (
       <div className="landing-carousel" onClick={() => dispatch({type: "setIsPlaying", value: !state.isPlaying})}>
-        <img className="carousel-image-bg" src={backgrounds[state.previous - 1]} alt="carousel" />
-        {backgrounds.map((el, i) => {
-          return <PosedCarousel pose={(i + 1 === state.position) ? "active" : "inactive"} className="carousel-image" src={el} alt="carousel" />
-        })}
+        <img className="carousel-image-bg" src={backgrounds[0]} alt="carousel" />
       </div>
   )
 }

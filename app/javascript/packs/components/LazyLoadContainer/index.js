@@ -6,7 +6,7 @@ import Ad from '../Ad'
 
 const LazyLoadContainer = (props) => {
 
-  const [scroll, setScroll] = useState(0)
+  const [scroll, setScroll] = useState(-1)
 
   const items = [
     "recommendations",
@@ -25,9 +25,15 @@ const LazyLoadContainer = (props) => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY
 
-    const active = componentRefs.map(el => {
-      const offsetBot = (el.ref.current.offsetTop + el.ref.current.offsetHeight)
-      if (currentScrollY >= el.ref.current.offsetTop && currentScrollY < offsetBot) {
+    const active = componentRefs.map((el, i) => {
+      const offsetTop = el.ref.current.offsetTop
+      const offsetBot = el.ref.current.offsetTop + el.ref.current.offsetHeight
+      const breakValue = el.ref.current.offsetHeight * 1
+
+      const breakpointTop = (offsetTop - breakValue)
+      const breakpointBot = (offsetBot - breakValue)
+
+      if (currentScrollY >= breakpointTop && currentScrollY < breakpointBot) {
         return true
       }
       else {

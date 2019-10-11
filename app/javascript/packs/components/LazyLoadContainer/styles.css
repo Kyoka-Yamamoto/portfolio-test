@@ -1,6 +1,6 @@
 .lazyload-container {
   width: 100vw;
-  height: 200vh;
+  z-index: 2;
   background: yellow;
   margin-top: calc(100vh - 4em);
   display: flex;

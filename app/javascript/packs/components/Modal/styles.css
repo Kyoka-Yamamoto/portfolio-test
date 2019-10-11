@@ -1,0 +1,17 @@
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.modal {
+  width: 80%;
+  height:80%;
+  background: rgb(240,240,240);
+}
