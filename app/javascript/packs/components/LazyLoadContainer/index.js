@@ -7,7 +7,7 @@ import Ad from '../Ad'
 import { homePage } from '../../assets/content/index.js'
 
 const LazyLoadContainer = (props) => {
-
+  const [modal, setModal] = useState(false)
   const [scroll, setScroll] = useState(-1)
 
   const componentRefs = homePage.map(el => {
@@ -51,9 +51,9 @@ const LazyLoadContainer = (props) => {
   })
 
   return(
-    <div className="lazyload-container" onClick={() => console.log(event)}>
+    <div className="lazyload-container">
       {componentRefs.map((el, i) => {
-        return <Ad currentScroll={scroll} order={i} componentRef={el}/>
+        return <Ad currentScroll={scroll} modal={modal} setModal={setModal} order={i} componentRef={el}/>
       })
       }
     </div>
