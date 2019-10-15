@@ -61,13 +61,13 @@ const Ad = (props) => {
   return (
     <div className="container" style={{flexFlow: `${((props.order + 1) % 2 === 0) ? "row-reverse nowrap" : "row nowrap"}`}} ref={props.componentRef.ref}>
       <PosedContent pose={loaded ? "visible" : `${((props.order + 1) % 2 === 0) ? "right" : "left"}`} className="container-text">
-        <h2 className="container-text-title" onClick={() => setModal(!modal)}>About Us</h2>
-        <p className="container-text-explanation">様々な種類のおやつを、食べきりサイズ(20-40g)でお届けします。マイページでリクエストや評価をするほど自分好みに。嫌いな食べ物を登録するとお届けしません季節によって取扱スナックが変わります</p>
+        <h2 className="container-text-title" onClick={() => setModal(!modal)}>{props.componentRef.title}</h2>
+        <p className="container-text-explanation">{props.componentRef.content}</p>
       </PosedContent>
       <PosedImage pose={loaded ? "visible" : `${((props.order + 1) % 2 === 0) ? "left" : "right"}`} className="container-photo">
         <img src={Map} alt="map" className="map" />
       </PosedImage>
-      <Modal modal={modal} title={props.componentRef.title} setModal={setModal} />
+      {props.componentRef.modal !== null ? <Modal modal={modal} content={props.componentRef.modal} setModal={setModal} /> :null}
     </div>
   )
 }

@@ -13,5 +13,35 @@
 .modal {
   width: 80%;
   height:80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   background: rgb(240,240,240);
+}
+
+
+.item-title-container{
+  width:15%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}
+
+.item-content-container{
+  width: 40%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: blue;
+}
+
+
+.item-photo-container{
+  width: 45%;
+  height: 100%;
+  background-color: red;
 }

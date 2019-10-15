@@ -17,11 +17,24 @@ const PosedModal = posed.div({
   }
 })
 
-const Modal = ({modal, title, setModal}) => {
+const Modal = ({modal, content, setModal}) => {
   return (
     <PosedModal pose={`${modal ? "visible" : "invisible"}`} className="modal-container" onClick={() => setModal(!modal)} style={{display: `${modal ? 'flex' : 'none'}`}}>
       <div className="modal">
-        {title}
+        <div className="item-title-container">
+          <div className="item-title">
+            {content.title}
+          </div>
+        </div>
+        <div className="item-content-container">
+          <div className="item-content">
+            {content.content}
+          </div>
+        </div>
+        <div className="item-photo-container">
+          <div className="item-photo">
+          </div>
+        </div>
       </div>
     </PosedModal>
   )

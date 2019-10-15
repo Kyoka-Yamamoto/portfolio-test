@@ -4,20 +4,17 @@ import './styles.css'
 
 import Ad from '../Ad'
 
+import { homePage } from '../../assets/content/index.js'
+
 const LazyLoadContainer = (props) => {
 
   const [scroll, setScroll] = useState(-1)
 
-  const items = [
-    "recommendations",
-    "number 2",
-    "number 3",
-    "number 4"
-  ]
-
-  const componentRefs = items.map(el => {
+  const componentRefs = homePage.map(el => {
     return {
-      title: el,
+      title: el.title,
+      content: el.content,
+      modal: el.modal,
       ref: useRef(null)
     }
   })
