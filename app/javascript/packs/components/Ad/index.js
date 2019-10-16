@@ -49,7 +49,6 @@ const PosedImage = posed.div({
 })
 
 const Ad = (props) => {
-  const [modal, setModal] = useState(false)
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -61,13 +60,13 @@ const Ad = (props) => {
   return (
     <div className="container" style={{flexFlow: `${((props.order + 1) % 2 === 0) ? "row-reverse nowrap" : "row nowrap"}`}} ref={props.componentRef.ref}>
       <PosedContent pose={loaded ? "visible" : `${((props.order + 1) % 2 === 0) ? "right" : "left"}`} className="container-text">
-        <h2 className="container-text-title" onClick={() => setModal(!modal)}>{props.componentRef.title}</h2>
+        <h2 className="container-text-title" onClick={() => props.setModal(true)}>{props.componentRef.title}</h2>
         <p className="container-text-explanation">{props.componentRef.content}</p>
       </PosedContent>
       <PosedImage pose={loaded ? "visible" : `${((props.order + 1) % 2 === 0) ? "left" : "right"}`} className="container-photo">
         <img src={Map} alt="map" className="map" />
       </PosedImage>
-      {props.componentRef.modal !== null ? <Modal modal={modal} content={props.componentRef.modal} setModal={setModal} /> :null}
+      {props.componentRef.modal !== null ? <Modal modal={props.modal} content={props.componentRef.modal} setModal={props.setModal} /> :null}
     </div>
   )
 }

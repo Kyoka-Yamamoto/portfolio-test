@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, useState } from 'react'
 import './styles.css'
 
 import posed from 'react-pose'
@@ -42,6 +42,17 @@ const PosedCarousel = posed.img({
 
 const LandingCarousel = ({ activeImage, setActiveImage }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [scroll, setScroll] = useState(window.scrollY / 6)
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY / 6
+    setScroll(currentScrollY)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: false })
+    return window.addEventListener('scroll', handleScroll, { passive: false })
+  })
 
   useEffect(() => {
     if (state.isPlaying) {
@@ -54,8 +65,9 @@ const LandingCarousel = ({ activeImage, setActiveImage }) => {
     }
   }, [state.isPlaying, state.position])
 
+
   return (
-      <div className="landing-carousel" onClick={() => dispatch({type: "setIsPlaying", value: !state.isPlaying})}>
+      <div style={{top: -scroll}} className="landing-carousel">
         <img className="carousel-image-bg" src={backgrounds[0]} alt="carousel" />
       </div>
   )

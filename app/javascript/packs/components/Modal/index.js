@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './styles.css'
 
@@ -18,25 +18,26 @@ const PosedModal = posed.div({
 })
 
 const Modal = ({modal, content, setModal}) => {
+  const [activeSubscription, setActiveSubscription] = useState(0)
+
   return (
-    <PosedModal pose={`${modal ? "visible" : "invisible"}`} className="modal-container" onClick={() => setModal(!modal)} style={{display: `${modal ? 'flex' : 'none'}`}}>
-      <div className="modal">
+      <PosedModal pose={`${modal ? "visible" : "invisible"}`} style={{display: `${modal ? 'flex' : 'none'}`}} className="modal">
+        <div style={{position: 'fixed', width: '100vw', height: '10vh', top: '0', left: '0', background: 'rgba(0,0,0,0.5)'}} onClick={() => setModal(false)}></div>
+        <div style={{position: 'fixed', width: '100vw', height: '10vh', bottom: '0', left: '0', background: 'rgba(0,0,0,0.5)'}} onClick={() => setModal(false)}></div>
+        <div style={{position: 'fixed', width: '10vw', height: '80vh', top: '10vh', left: '0', background: 'rgba(0,0,0,0.5)'}} onClick={() => setModal(false)}></div>
+        <div style={{position: 'fixed', width: '10vw', height: '80vh', top: '10vh', right: '0', background: 'rgba(0,0,0,0.5)'}} onClick={() => setModal(false)}></div>
         <div className="item-title-container">
-          <div className="item-title">
-            {content.title}
-          </div>
+          {content.map((el, i) => {
+            return <p style={{marginTop: '2em'}} onClick={() => setActiveSubscription(i)}>{el.title}</p>
+          })}
         </div>
         <div className="item-content-container">
-          <div className="item-content">
-            {content.content}
-          </div>
+          {content[activeSubscription].content}
         </div>
         <div className="item-photo-container">
-          <div className="item-photo">
-          </div>
+
         </div>
-      </div>
-    </PosedModal>
+      </PosedModal>
   )
 }
 

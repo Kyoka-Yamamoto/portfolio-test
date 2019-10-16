@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscription_id: 1
+  order_date: 2019-10-16
+  delivery_date: 2019-10-16
+  cost: 1
+  user_id: 1
+  status: MyString
+
+two:
+  subscription_id: 1
+  order_date: 2019-10-16
+  delivery_date: 2019-10-16
+  cost: 1
+  user_id: 1
+  status: MyString
